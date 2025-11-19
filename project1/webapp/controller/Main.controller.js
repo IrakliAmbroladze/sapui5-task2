@@ -4,7 +4,11 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("project1.controller.Main", {
-      onInit() {},
+      onInit() {
+        const oModel = new JSONModel();
+        oModel.loadData("../model/books.json");
+        this.getView().setModel(oModel, "booksModel");
+      },
     });
   },
 );
