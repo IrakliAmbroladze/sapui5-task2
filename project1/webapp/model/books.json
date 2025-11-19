@@ -1,0 +1,44 @@
+{
+  "books": [
+    {
+      "ID": "1",
+      "Name": "The Hobbit",
+      "Author": "J.R.R. Tolkien",
+      "Genre": "Fantasy",
+      "ReleaseDate": "1937-09-21",
+      "AvailableQuantity": 12
+    },
+    {
+      "ID": "2",
+      "Name": "1984",
+      "Author": "George Orwell",
+      "Genre": "Dystopia",
+      "ReleaseDate": "1949-06-08",
+      "AvailableQuantity": 5
+    },
+    {
+      "ID": "3",
+      "Name": "Dune",
+      "Author": "Frank Herbert",
+      "Genre": "Sci-Fi",
+      "ReleaseDate": "1965-08-01",
+      "AvailableQuantity": 20
+    },
+    {
+      "ID": "4",
+      "Name": "Hamlet",
+      "Author": "Shakespeare",
+      "Genre": "Drama",
+      "ReleaseDate": "1603-01-01",
+      "AvailableQuantity": 3
+    },
+    {
+      "ID": "5",
+      "Name": "The Pragmatic Programmer",
+      "Author": "Andrew Hunt",
+      "Genre": "Tech",
+      "ReleaseDate": "1999-10-30",
+      "AvailableQuantity": 7
+    }
+  ]
+}
