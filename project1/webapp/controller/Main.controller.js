@@ -1,6 +1,10 @@
 sap.ui.define(
-  ["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel"],
-  (Controller, JSONModel) => {
+  [
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageToast",
+  ],
+  (Controller, JSONModel, MessageToast) => {
     "use strict";
 
     return Controller.extend("project1.controller.Main", {
@@ -9,7 +13,13 @@ sap.ui.define(
         oModel.loadData("../model/books.json");
         this.getView().setModel(oModel, "booksModel");
       },
-    });
-  },
-);
+      onAddRecord: function () {
+        MessageToast.show("Add Record clicked");
+      },
 
+      onDeleteRecord: function () {
+        MessageToast.show("Delete Record clicked");
+      },
+    });
+  }
+);

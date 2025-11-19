@@ -9,8 +9,8 @@
                 <Toolbar>
                     <Title text="Books" level="H2"/>
                     <ToolbarSpacer/>
-                    <Button text="Add Record" type="Accept"/>
-                    <Button text="Delete Record" type="Reject"/>
+                    <Button text="Add Record" type="Accept" press=".onAddRecord"/>
+                    <Button text="Delete Record" type="Reject" press=".onDeleteRecord"/>
                 </Toolbar>
             </headerToolbar>
         <columns>
