@@ -5,6 +5,14 @@
     <Table
         id="booksTable"
         items="{booksModel>/books}">
+        <headerToolbar>
+                <Toolbar>
+                    <Title text="Books" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Button text="Add Record" type="Accept"/>
+                    <Button text="Delete Record" type="Reject"/>
+                </Toolbar>
+            </headerToolbar>
         <columns>
             <Column><Text text="ID"/></Column>
             <Column><Text text="Name"/></Column>
