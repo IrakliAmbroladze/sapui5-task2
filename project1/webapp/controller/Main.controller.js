@@ -1,20 +1,20 @@
 sap.ui.define(
   [
-    "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
+    "project1/controller/BaseController",
   ],
-  (Controller, JSONModel, MessageToast) => {
+  (JSONModel, MessageToast, BaseController) => {
     "use strict";
 
-    return Controller.extend("project1.controller.Main", {
+    return BaseController.extend("project1.controller.Main", {
       onInit() {
         const oModel = new JSONModel();
         oModel.loadData("../model/books.json");
-        this.getView().setModel(oModel, "booksModel");
+        this.setModel(oModel, "booksModel");
       },
       onAddRecord: function () {
-        const oModel = this.getView().getModel("booksModel");
+        const oModel = this.getModel("booksModel");
         const aBooks = oModel.getProperty("/books");
 
         aBooks.push({
@@ -38,7 +38,7 @@ sap.ui.define(
           MessageToast.show("No rows selected.");
           return;
         }
-        const oModel = this.getView().getModel("booksModel");
+        const oModel = this.getModel("booksModel");
         let aBooks = oModel.getProperty("/books");
 
         const aSelectedIndices = aSelectedItems.map((item) => {
