@@ -12,7 +12,22 @@ sap.ui.define(
         const oModel = new JSONModel();
         oModel.loadData("../model/books.json");
         this.setModel(oModel, "booksModel");
+        oModel.attachRequestCompleted(() => {
+          this._loadGenres();
+        });
       },
+
+      _loadGenres: function () {
+        const aBooks = this.getModel("booksModel").getProperty("/books");
+        const aGenres = [...new Set(aBooks.map((b) => b.Genre))];
+
+        const oGenreModel = new JSONModel({
+          genres: aGenres.map((g) => ({ key: g, text: g })),
+        });
+
+        this.setModel(oGenreModel, "genreModel");
+      },
+
       onAddRecord: function () {
         const oModel = this.getModel("booksModel");
         const aBooks = oModel.getProperty("/books");
