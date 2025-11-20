@@ -31,7 +31,31 @@ sap.ui.define(
       },
 
       onDeleteRecord: function () {
-        MessageToast.show("Delete Record clicked");
+        const oTable = this.byId("booksTable");
+        const aSelectedItems = oTable.getSelectedItems();
+
+        if (aSelectedItems.length === 0) {
+          MessageToast.show("No rows selected.");
+          return;
+        }
+        const oModel = this.getView().getModel("booksModel");
+        let aBooks = oModel.getProperty("/books");
+
+        const aSelectedIndices = aSelectedItems.map((item) => {
+          const sPath = item.getBindingContext("booksModel").getPath();
+          return parseInt(sPath.split("/").pop(), 10);
+        });
+
+        const oSelectedSet = new Set(aSelectedIndices);
+
+        aBooks = aBooks.filter((_, idx) => !oSelectedSet.has(idx));
+
+        oModel.setProperty("/books", aBooks);
+        oModel.refresh(true);
+
+        oTable.removeSelections(true);
+
+        MessageToast.show("Selected record(s) deleted.");
       },
     });
   },
