@@ -22,9 +22,9 @@ sap.ui.define(
       _loadGenres: function () {
         const aBooks = this.getModel("booksModel").getProperty("/books");
         const aGenres = [...new Set(aBooks.map((b) => b.Genre))];
-
+        aGenres.unshift("");
         const oGenreModel = new JSONModel({
-          genres: aGenres.map((g) => ({ key: g, text: g })),
+          genres: aGenres.map((g) => ({ key: g, text: g || "(All Genres)" })),
         });
 
         this.setModel(oGenreModel, "genreModel");

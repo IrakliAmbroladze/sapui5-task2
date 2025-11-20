@@ -19,7 +19,7 @@
 										<Select id="selectGenre"
                             width="150px"
                             items="{genreModel>/genres}">
-                    <core:Item xmlns:core="sap.ui.core"
+												<core:Item xmlns:core="sap.ui.core"
                                    key="{genreModel>key}"
                                    text="{genreModel>text}"/>
                     </Select>
