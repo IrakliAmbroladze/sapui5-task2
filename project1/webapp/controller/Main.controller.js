@@ -14,12 +14,25 @@ sap.ui.define(
         this.getView().setModel(oModel, "booksModel");
       },
       onAddRecord: function () {
-        MessageToast.show("Add Record clicked");
+        const oModel = this.getView().getModel("booksModel");
+        const aBooks = oModel.getProperty("/books");
+
+        aBooks.push({
+          ID: "",
+          Name: "",
+          Author: "",
+          Genre: "",
+          ReleaseDate: "",
+          AvailableQuantity: 0,
+        });
+
+        oModel.refresh(true);
+        MessageToast.show("New empty record added.");
       },
 
       onDeleteRecord: function () {
         MessageToast.show("Delete Record clicked");
       },
     });
-  }
+  },
 );
