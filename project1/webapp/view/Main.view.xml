@@ -7,8 +7,8 @@
           <Title text="Books" level="H2"/>
           <ToolbarSpacer/>
           <Input id="inputTitle" placeholder="Filter by title..." width="200px"/>
-          <Select id="selectGenre" width="150px" items="{genreModel&gt;/genres}">
-            <core:Item xmlns:core="sap.ui.core" key="{genreModel&gt;key}" text="{genreModel&gt;text}"/>
+          <Select id="selectGenre" width="150px" items="{booksModel&gt;/genres}">
+            <core:Item xmlns:core="sap.ui.core" key="{booksModel&gt;key}" text="{booksModel&gt;text}"/>
           </Select>
           <Button text="Filter" type="Default" press=".onFilter"/>
           <ToolbarSpacer/>
