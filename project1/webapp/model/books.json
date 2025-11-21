@@ -40,5 +40,13 @@
       "ReleaseDate": "1999-10-30",
       "AvailableQuantity": 7
     }
+  ],
+  "genres": [
+    { "key": "", "text": "(All genres)" },
+    { "key": "Fantasy", "text": "Fantasy" },
+    { "key": "Dystopia", "text": "Dystopia" },
+    { "key": "Sci-Fi", "text": "Sci-Fi" },
+    { "key": "Drama", "text": "Drama" },
+    { "key": "Tech", "text": "Tech" }
   ]
 }

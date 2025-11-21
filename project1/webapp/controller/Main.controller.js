@@ -14,20 +14,6 @@ sap.ui.define(
         const oModel = new JSONModel();
         oModel.loadData("../model/books.json");
         this.setModel(oModel, "booksModel");
-        oModel.attachRequestCompleted(() => {
-          this._loadGenres();
-        });
-      },
-
-      _loadGenres: function () {
-        const aBooks = this.getModel("booksModel").getProperty("/books");
-        const aGenres = [...new Set(aBooks.map((b) => b.Genre))];
-        aGenres.unshift("");
-        const oGenreModel = new JSONModel({
-          genres: aGenres.map((g) => ({ key: g, text: g || "(All Genres)" })),
-        });
-
-        this.setModel(oGenreModel, "genreModel");
       },
 
       onAddRecord: function () {
@@ -50,28 +36,19 @@ sap.ui.define(
       onDeleteRecord: function () {
         const oTable = this.byId("booksTable");
         const aSelectedItems = oTable.getSelectedItems();
-
+        const IdsDeletion = aSelectedItems.map((oItem) => {
+          return oItem.getBindingContext("booksModel").getProperty("ID");
+        });
         if (aSelectedItems.length === 0) {
           MessageToast.show("No rows selected.");
           return;
         }
-        const oModel = this.getModel("booksModel");
-        let aBooks = oModel.getProperty("/books");
-
-        const aSelectedIndices = aSelectedItems.map((item) => {
-          const sPath = item.getBindingContext("booksModel").getPath();
-          return parseInt(sPath.split("/").pop(), 10);
-        });
-
-        const oSelectedSet = new Set(aSelectedIndices);
-
-        aBooks = aBooks.filter((_, idx) => !oSelectedSet.has(idx));
-
-        oModel.setProperty("/books", aBooks);
-        oModel.refresh(true);
-
-        oTable.removeSelections(true);
-
+        let modelArray = this.getModel("booksModel").getObject("/books");
+        const newArrayForModel = modelArray.filter(
+          (book) => !IdsDeletion.includes(book.ID),
+        );
+        this.getModel("booksModel").setProperty("/books", newArrayForModel);
+        oTable.removeSelections();
         MessageToast.show("Selected record(s) deleted.");
       },
 
